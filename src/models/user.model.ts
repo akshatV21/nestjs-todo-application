@@ -1,6 +1,7 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose'
 import { hashSync } from 'bcrypt'
 import { Document } from 'mongoose'
+import { Set } from './set.model'
 
 export type UserDocument = User & Document
 
@@ -13,7 +14,7 @@ export class User {
   password: string
 
   @Prop({ default: [], ref: Set })
-  sets: []
+  sets: Set[]
 
   _doc: any
 }
