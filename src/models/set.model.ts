@@ -1,5 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose'
 import { Document, Types } from 'mongoose'
+import { Task } from './task.model'
 
 export type SetDocument = Set & Document
 
@@ -12,7 +13,7 @@ export class Set {
   name: string
 
   @Prop({ default: [], ref: 'Task' })
-  tasks: []
+  tasks: Task[]
 }
 
 export const SetSchema = SchemaFactory.createForClass(Set)

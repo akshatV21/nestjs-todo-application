@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, Param, Get } from '@nestjs/common'
+import { Body, Controller, Post, UseGuards, Query, Get } from '@nestjs/common'
 import { UserDocument } from 'src/models/user.model'
 import { Auth } from 'src/user/decorators/Auth.decorator'
 import { ReqUser } from 'src/user/decorators/ReqUser.decorator'
@@ -20,7 +20,7 @@ export class SetsController {
   @Get(':id')
   @Auth({ user: true })
   @UseGuards(new CanAccessSet())
-  async getSingleSet(@Param('id') id: string) {
+  async getSingleSet(@Query('setId') id: string) {
     const set = await this.setsService.getSingle(id)
     return { success: true, message: 'Set was successfully retrieved', set }
   }

@@ -9,10 +9,10 @@ export class CanAccessSet implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const req = context.switchToHttp().getRequest()
     const user = req.user
-    const set = req.params.id
+    const set = req.query.setId
 
     const setExists = user.sets.includes(set)
-    if (!setExists) throw new UnauthorizedException('You can not access this sey')
+    if (!setExists) throw new UnauthorizedException('Set does not exists')
     return true
   }
 }
