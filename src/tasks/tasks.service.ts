@@ -3,7 +3,6 @@ import { InjectModel } from '@nestjs/mongoose'
 import { Model, Types } from 'mongoose'
 import { Set, SetDocument } from 'src/models/set.model'
 import { Task, TaskDocument } from 'src/models/task.model'
-import { UserDocument } from 'src/models/user.model'
 import { TaskPayload } from './dtos/TaskPayload.dto'
 
 @Injectable()
