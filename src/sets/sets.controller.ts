@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards, Param } from '@nestjs/common'
+import { Body, Controller, Post, UseGuards, Param, Get } from '@nestjs/common'
 import { UserDocument } from 'src/models/user.model'
 import { Auth } from 'src/user/decorators/Auth.decorator'
 import { ReqUser } from 'src/user/decorators/ReqUser.decorator'
@@ -23,5 +23,12 @@ export class SetsController {
   async getSingleSet(@Param('id') id: string) {
     const set = await this.setsService.getSingle(id)
     return { success: true, message: 'Set was successfully retrieved', set }
+  }
+
+  @Get()
+  @Auth()
+  async getUserSets(@ReqUser() userId: string) {
+    const sets = await this.setsService.getUserSets(userId)
+    return { success: true, message: 'Sets were successfully retrieved', sets }
   }
 }

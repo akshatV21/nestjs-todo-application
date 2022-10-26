@@ -16,6 +16,11 @@ export class SetsService {
     return Set
   }
 
+  async getUserSets(userId: string) {
+    const sets = await this.SetModel.find({ user: userId })
+    return sets
+  }
+
   async getSingle(id: string) {
     const set = await this.SetModel.findById(id)
     return set
