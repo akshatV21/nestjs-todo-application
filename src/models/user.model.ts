@@ -13,7 +13,7 @@ export class User {
   @Prop({ required: true })
   password: string
 
-  @Prop({ default: [], ref: Set })
+  @Prop({ default: [], ref: 'Set' })
   sets: Set[]
 
   _doc: any

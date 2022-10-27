@@ -30,7 +30,7 @@ export class Authorize implements CanActivate {
   }
 
   private verifyToken(token: string): any {
-    return verify(token, process.env.JWT_TOKEN, (err, id) => {
+    return verify(token, process.env.JWT_TOKEN ?? 'hello', (err, id) => {
       if (err) throw new BadRequestException('Invalid Jwt token')
       return id
     })

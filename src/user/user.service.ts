@@ -25,7 +25,7 @@ export class UserService {
     const passwordMatches = compareSync(userPayload.password, registeredUser.password)
     if (!passwordMatches) throw new BadRequestException('Incorrect password')
 
-    const token = sign(registeredUser.id, process.env.JWT_SECRET)
+    const token = sign(registeredUser.id, process.env.JWT_SECRET ?? 'hello')
     const { password, ...rest } = registeredUser._doc
     return { ...rest, token }
   }
