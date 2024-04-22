@@ -9,7 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose'
     UserModule,
     SetsModule,
     TasksModule,
-    MongooseModule.forRoot('mongodb+srv://akshat21:aku1985pika@cluster0.ew0oz.mongodb.net/todo_app?'),
+    MongooseModule.forRoot(process.env.DB_URL),
   ],
   controllers: [],
   providers: [],
